@@ -1,4 +1,4 @@
-import React,{useState,useRef} from "react";
+import React,{useState} from "react";
 import "./Nav.css"
 
 let NavBar = ()=>{
@@ -13,13 +13,7 @@ let NavBar = ()=>{
 
     let [Noti,setNoti]= useState(false)
 
-    const nav = useRef()
-    const top = useRef()
-    const mode = useRef()
-    const side2 = useRef()
-    const side1 = useRef()
-
-
+    
     let fclick = ()=>{
         setFind(!Find)
     }
@@ -49,33 +43,6 @@ let NavBar = ()=>{
         setMode(!Mode)
     }
 
-    let moon =()=>{
-        nav.current.style.backgroundColor="rgb(42, 42, 46)"
-        nav.current.style.boxShadow = "3px 3px 3px black "
-        top.current.style.backgroundColor = "rgb(42, 42, 46)"
-        top.current.style.color = "white"
-        side2.current.style.backgroundColor="rgb(42, 42, 46)"
-        side2.current.style.color = "white"
-        side2.current.style.boxShadow = "3px 3px 3px black "
-        side1.current.style.color = "rgb(42, 42, 46)"
-        side1.current.style.boxShadow = "3px 3px 3px black "
-        document.html.style.backgroundColor="rgb(42, 42, 46)"
-        
-    }
-
-    let sun = ()=>{
-        nav.current.style.backgroundColor="white"
-        nav.current.style.boxShadow = "5px 5px 5px rgb(223, 223, 223) "
-        top.current.style.backgroundColor = "white"
-        top.current.style.color = "black"
-        side2.current.style.backgroundColor="white"
-        side2.current.style.color = "black"
-        side2.current.style.boxShadow = "5px 0px 5px rgb(223, 223, 223) "
-        side1.current.style.color = "black"
-        side1.current.style.boxShadow = "5px 0px 5px rgb(223, 223, 223) "
-        document.body.style.backgroundColor="rgb(242, 245, 245)"
-    }
-
     let notify =()=>{
         setNoti(!Noti)
     }
@@ -93,8 +60,8 @@ let NavBar = ()=>{
             </div>}
 
 
-            <div ref={nav}  className="nav">
-                <div ref={top} className="top-nav">
+            <div className="nav">
+                <div  className="top-nav">
                     <div className="logo-div" >
                         <i title="menu" className="fa-solid fa-bars" onClick={click}></i>
                         <div className="logo"></div>
@@ -108,18 +75,18 @@ let NavBar = ()=>{
                         <i title="create video" className="fa-solid fa-book"></i>
 
                         <i title="notification" className="fa-solid fa-bell" onClick={notify}></i>
-                        {Noti&& <div  className="mode">Notii</div>}
+                        {Noti&& <div className="mode">Notii</div>}
 
-                        <i title="modes" className="fa-solid fa-sun" onClick={modes}></i>
+                        <i  title="modes" className="fa-solid fa-sun" onClick={modes}></i>
                         {Mode && 
-                        <div ref={mode} className="mode">
-                            <i className="fa-solid fa-moon" onClick={moon}></i>
+                        <div  className="mode">
+                            <i className="fa-solid fa-moon"></i>
 
-                            <i className="fa-solid fa-sun" onClick={sun}></i>
+                            <i className="fa-solid fa-sun" ></i>
 
-                            <i className="fa-solid fa-moon" onClick={moon}></i>
+                            <i className="fa-solid fa-moon" ></i>
 
-                            <i className="fa-solid fa-moon" onClick={moon}></i>
+                            <i className="fa-solid fa-moon" ></i>
                         </div>}
                     </div>
 
@@ -129,7 +96,7 @@ let NavBar = ()=>{
             </div>
 
 
-            <div ref={side2} className="sidenav2">
+            <div className="sidenav2">
                 <br/>
                 <br/>
                 <i className="fa-solid fa-home"></i>
@@ -146,7 +113,7 @@ let NavBar = ()=>{
 
 
             {Toggle && 
-            <div ref={side1} className="sidenav1">
+            <div className="sidenav1">
                 <div className="grd home-div">
                     <div className="side-nav-div">
                         <i className="fa-solid fa-home"></i>

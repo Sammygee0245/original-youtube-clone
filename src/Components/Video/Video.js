@@ -5,19 +5,16 @@ let VidoeDiv = (props)=>{
 
     return(
         <div>
-           
-        <div>
-            <a href={props.tems.url} className="video-div">
-                <div><img src={props.tems.urlToImage} alt="" className="video-pre"/></div>
+            <a href={props.url}  className="video-div">
+                <div><img src={props.pic} alt="" className="video-pre"/></div>
                 <div className="video-info">
-                    <div><img src={props.tems.urlToImage} alt="" className="channel-img"/></div>
+                    <div><img  alt="" className="channel-img"/></div>
                     <div>
-                    <p className="video-title">{props.tems.title}</p>
-                    <p className="video-author">{props.tems.source.name}</p>
+                    <p className="video-title">{props.title}</p>
+                    <p className="video-author">{props.name}</p>
                     </div>
                 </div>
             </a>
-        </div>
 
             
         </div>

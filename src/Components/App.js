@@ -7,32 +7,31 @@ import "./App.css"
 
 function App() {
 
-  let [VidState,setVidState]=useState()
+  let [VidState,setVidState]=useState([])
 
   useEffect(()=>{
     fetch("https://newsapi.org/v2/everything?q=movies&from=2022-11-16&sortBy=publishedAt&apiKey=29759b6aaa11454996b41a8ba2527748")
     .then(res=>res.json())
-    .then(data=>setVidState(data))
+    .then(data=>setVidState(data.articles))
+    
   },[])
 
-  let Tube = VidState.articles.map((tems)=>{
-    return <VidoeDiv
-    tems = {tems}
-    />
-  })
+  // let Tube = VidState.articles.map((tems)=>{
+  //   return <VidoeDiv
+  //   tems = {tems}
+  //   />
+  // })
 
-console.log(VidState.articles.map((tems)=>{return tems}))
+let vv = VidState.map((tems)=>{return (
+  <VidoeDiv
+  title = {tems.title}
+  url = {tems.url}
+  pic = {tems.urlToImage}
+  name = {tems.source.name}
+  />
+)})
 
-
-
-
-
-
-  
-
-  
-
-
+console.log(VidState)
 
  
 
@@ -40,7 +39,7 @@ console.log(VidState.articles.map((tems)=>{return tems}))
     <div className="App">
       <NavBar/>
       <div className="grd1">
-       {Tube}
+      {vv}
       </div>
     </div>
   );
