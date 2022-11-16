@@ -1,7 +1,16 @@
-import React,{useState} from "react";
+import React,{useState,useRef} from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars,faSearch,faPaperclip,faBell,faMoon,faX ,faSun} from "@fortawesome/free-solid-svg-icons";
 import "./Nav.css"
 
+
+
+
+
 let NavBar = ()=>{
+
+    const nav = useRef()
+    const side2 = useRef()
 
     let [Toggle,setToggle] = useState(false)
 
@@ -47,6 +56,22 @@ let NavBar = ()=>{
         setNoti(!Noti)
     }
 
+    let moon = ()=>{
+        document.body.style.backgroundColor = "rgb(212, 212, 212)"
+        nav.current.style.backgroundColor = "rgb(212, 212, 212)"
+        side2.current.style.backgroundColor = "rgb(212, 212, 212)"
+        setMode(!Mode)
+    }
+
+    let sun = ()=>{
+        document.body.style.backgroundColor = "white"
+        nav.current.style.backgroundColor = "white"
+        side2.current.style.backgroundColor = "white"
+        setMode(!Mode)
+    }
+
+    
+
 
     return(
         <div>
@@ -54,39 +79,39 @@ let NavBar = ()=>{
             <div className="find">
                 <div className="sfind">
                     <input className="sfind-input" type="text" value={InputValue} onChange={CollectInput}/>
-                    {Show &&<i className="fa-solid fa-x clear" onClick={clear}></i>}
-                    <i className="fa-solid fa-search fsearch" onClick={cclick}></i>
+                    {Show &&<FontAwesomeIcon icon={faX} className="clear" onClick={clear}></FontAwesomeIcon>}
+                    <FontAwesomeIcon className="fsearch font" onClick={cclick} icon={faSearch}></FontAwesomeIcon>
                 </div>
             </div>}
 
 
-            <div className="nav">
-                <div  className="top-nav">
+            <div ref={nav} className="nav">
+                <div   className="top-nav">
                     <div className="logo-div" >
-                        <i title="menu" className="fa-solid fa-bars" onClick={click}></i>
+                    <FontAwesomeIcon className="font" title="menu" onClick={click} icon={faBars}></FontAwesomeIcon>
                         <div className="logo"></div>
                     </div>
 
                     <div className="search-div">
-                        <div className="search"><input type="text" className="inputbox" placeholder="Click the search icon first" readOnly/><i className="fa-solid fa-search" onClick={fclick}></i></div>
+                        <div className="search"><input type="text" className="inputbox" placeholder="Click the search icon first" readOnly/><FontAwesomeIcon icon={faSearch} className="font" onClick={fclick}></FontAwesomeIcon></div>
                     </div>
 
                     <div className="profile-div">
-                        <i title="create video" className="fa-solid fa-book"></i>
+                        <FontAwesomeIcon className="font" icon={faPaperclip}></FontAwesomeIcon>
 
-                        <i title="notification" className="fa-solid fa-bell" onClick={notify}></i>
+                        <FontAwesomeIcon className="font" onClick={notify} icon={faBell}></FontAwesomeIcon>
                         {Noti&& <div className="mode">Notii</div>}
 
-                        <i  title="modes" className="fa-solid fa-sun" onClick={modes}></i>
+                        <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         {Mode && 
                         <div  className="mode">
-                            <i className="fa-solid fa-moon"></i>
+                          <FontAwesomeIcon className="font" onClick={moon} icon={faMoon}></FontAwesomeIcon>
 
-                            <i className="fa-solid fa-sun" ></i>
+                          <FontAwesomeIcon className="font" onClick={sun} icon={faSun}></FontAwesomeIcon>
 
-                            <i className="fa-solid fa-moon" ></i>
+                          <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
 
-                            <i className="fa-solid fa-moon" ></i>
+                            <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         </div>}
                     </div>
 
@@ -96,19 +121,19 @@ let NavBar = ()=>{
             </div>
 
 
-            <div className="sidenav2">
+            <div ref={side2} className="sidenav2">
                 <br/>
                 <br/>
-                <i className="fa-solid fa-home"></i>
+                <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                 <br/>
                 <br/>
-                <i className="fa-solid fa-home"></i>
+                <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                 <br/>
                 <br/>
-                <i className="fa-solid fa-home"></i>
+                <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                 <br/>
                 <br/>
-                <i className="fa-solid fa-home"></i>
+                <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
             </div>
 
 
@@ -116,15 +141,15 @@ let NavBar = ()=>{
             <div className="sidenav1">
                 <div className="grd home-div">
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Home</p>
                     </div>
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-thunderstorm"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Short</p>
                     </div>
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Subscription</p>
                     </div>
                 </div>
@@ -132,23 +157,23 @@ let NavBar = ()=>{
 
                 <div className="grd libary-div">
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Libary</p>
                     </div>
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>History</p>
                     </div>
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Your Videos</p>
                     </div>
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Watch Later</p>
                     </div>
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-car"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Liked videos</p>
                     </div>
                 </div>
@@ -159,19 +184,19 @@ let NavBar = ()=>{
 
                 <div className="grd trending-div">
                 <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Home</p>
                     </div>
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Home</p>
                     </div>
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Home</p>
                     </div>
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Home</p>
                     </div> 
                 </div>
@@ -179,15 +204,15 @@ let NavBar = ()=>{
 
                 <div className="grd setting-div">
                 <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Home</p>
                     </div>
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Home</p>
                     </div>
                     <div className="side-nav-div">
-                        <i className="fa-solid fa-home"></i>
+                    <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         <p>Home</p>
                     </div>
                 </div>

@@ -8,7 +8,7 @@ let VidoeDiv = (props)=>{
             <a href={props.url}  className="video-div">
                 <div><img src={props.pic} alt="" className="video-pre"/></div>
                 <div className="video-info">
-                    <div><img  alt="" className="channel-img"/></div>
+                    <div><img src={props.pic}  alt="" className="channel-img"/></div>
                     <div>
                     <p className="video-title">{props.title}</p>
                     <p className="video-author">{props.name}</p>
