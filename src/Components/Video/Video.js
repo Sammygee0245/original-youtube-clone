@@ -1,13 +1,15 @@
-import React from "react";
+import React,{useRef} from "react";
 import "./Video.css"
 
 let VidoeDiv = (props)=>{
+
+    let vidinfo = useRef()
 
     return(
         <div>
             <a href={props.url}  className="video-div">
                 <div><img src={props.pic} alt="" className="video-pre"/></div>
-                <div className="video-info">
+                <div ref={vidinfo} className="video-info">
                     <div><img src={props.pic}  alt="" className="channel-img"/></div>
                     <div>
                     <p className="video-title">{props.title}</p>

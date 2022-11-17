@@ -13,7 +13,7 @@ function App() {
     fetch("https://newsapi.org/v2/everything?q=movies&from=2022-11-16&sortBy=publishedAt&apiKey=29759b6aaa11454996b41a8ba2527748")
     .then(res=>res.json())
     .then(data=>setVidState(data.articles))
-    .catch(err=>console.error("Unavailable"))
+    .catch(err=>console.log("Unavailable"))
     
   },[])
 

@@ -1,16 +1,13 @@
 import React,{useState,useRef} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars,faSearch,faPaperclip,faBell,faMoon,faX ,faSun} from "@fortawesome/free-solid-svg-icons";
+import { faBars,faSearch,faPaperclip,faBell,faMoon,faX ,faSun,faLemon,faChampagneGlasses,faCloud} from "@fortawesome/free-solid-svg-icons";
 import "./Nav.css"
 
 
-
-
-
 let NavBar = ()=>{
-
     const nav = useRef()
     const side2 = useRef()
+    const side1 = useRef()
 
     let [Toggle,setToggle] = useState(false)
 
@@ -56,17 +53,49 @@ let NavBar = ()=>{
         setNoti(!Noti)
     }
 
-    let moon = ()=>{
-        document.body.style.backgroundColor = "rgb(212, 212, 212)"
-        nav.current.style.backgroundColor = "rgb(212, 212, 212)"
-        side2.current.style.backgroundColor = "rgb(212, 212, 212)"
+    let fancy = ()=>{
+        document.body.style.backgroundImage = "linear-gradient(to right,#fff4a2,#aceccb)"
+        nav.current.style.backgroundImage = "linear-gradient(to right,#fff4a2,#aceccb)"
+        nav.current.style.color = "black"
+        nav.current.style.boxShadow = "4px 4px 4px rgb(159, 184, 201)"
+        side2.current.style.backgroundImage = "linear-gradient(to right,#fff4a2,#aceccb)"
+        side2.current.style.boxShadow = "4px 4px 4px rgb(159, 184, 201)"
+        side2.current.style.color = "black"
         setMode(!Mode)
     }
 
+
     let sun = ()=>{
-        document.body.style.backgroundColor = "white"
-        nav.current.style.backgroundColor = "white"
-        side2.current.style.backgroundColor = "white"
+        document.body.style.backgroundImage = "linear-gradient(to right,rgb(255, 255, 255),rgb(255, 255, 255))"
+        nav.current.style.backgroundImage = "linear-gradient(to right,rgb(255, 255, 255),rgb(255, 255, 255))"
+        nav.current.style.color = "black"
+        nav.current.style.boxShadow = "0px 5px 5px rgb(223, 223, 223)"
+        side2.current.style.backgroundImage = "linear-gradient(to right,rgb(255, 255, 255),rgb(255, 255, 255))"
+        side2.current.style.boxShadow = "5px 5px 5px rgb(223, 223, 223)"
+        nav.current.style.boxShadow = "5px 5px 5px rgb(223, 223, 223)"
+        side2.current.style.color = "black"
+        setMode(!Mode)
+    }
+
+    let hacker = ()=>{
+        document.body.style.backgroundImage = "linear-gradient(to right,#FBC2EB,#78A3EB)"
+        nav.current.style.backgroundImage = "linear-gradient(to right,#FBC2EB,#78A3EB)"
+        nav.current.style.color = "black"
+        nav.current.style.boxShadow = "4px 4px 4px rgb(159, 184, 201)"
+        side2.current.style.backgroundImage = "linear-gradient(to right,#FBC2EB,#78A3EB)"
+        side2.current.style.boxShadow = "4px 4px 4px rgb(159, 184, 201)"
+        side2.current.style.color = "black"
+        setMode(!Mode)
+    }
+
+    let dark = ()=>{
+        document.body.style.backgroundImage = "linear-gradient(to right,#fdfbfa,#dbc6b4)"
+        nav.current.style.backgroundImage = "linear-gradient(to right,#fdfbfa,#dbc6b4)"
+        nav.current.style.color = "black"
+        nav.current.style.boxShadow = "4px 4px 4px rgb(159, 184, 201)"
+        side2.current.style.backgroundImage = "linear-gradient(to right,#fdfbfa,#dbc6b4)"
+        side2.current.style.boxShadow = "4px 4px 4px rgb(159, 184, 201)"
+        side2.current.style.color = "black"
         setMode(!Mode)
     }
 
@@ -97,21 +126,39 @@ let NavBar = ()=>{
                     </div>
 
                     <div className="profile-div">
-                        <FontAwesomeIcon className="font" icon={faPaperclip}></FontAwesomeIcon>
+                        <FontAwesomeIcon title="clip" className="font" icon={faPaperclip}></FontAwesomeIcon>
 
-                        <FontAwesomeIcon className="font" onClick={notify} icon={faBell}></FontAwesomeIcon>
+                        <FontAwesomeIcon title="notification"  className="font" onClick={notify} icon={faBell}></FontAwesomeIcon>
                         {Noti&& <div className="mode">Notii</div>}
 
-                        <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
+                        <FontAwesomeIcon title="theme" className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         {Mode && 
                         <div  className="mode">
-                          <FontAwesomeIcon className="font" onClick={moon} icon={faMoon}></FontAwesomeIcon>
+                            <div className="settheme"><h3>Set Theme</h3></div>
 
-                          <FontAwesomeIcon className="font" onClick={sun} icon={faSun}></FontAwesomeIcon>
+                            <div onClick={sun}  className="theme">
+                            <FontAwesomeIcon className="font"  icon={faSun}></FontAwesomeIcon>
+                            <p>Light Theme</p>
+                            </div>
+                          
+                          <div onClick={dark}  className="theme">
+                          <FontAwesomeIcon className="font"  icon={faChampagneGlasses}></FontAwesomeIcon>
+                          <p>Champange Theme</p>
+                          </div>
 
-                          <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
+                          
+                          <div onClick={fancy} className="theme">
+                          <FontAwesomeIcon className="font" onClick={modes} icon={faLemon}></FontAwesomeIcon>
+                          <p>Lemonade Theme</p>
+                          </div>
 
-                            <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
+                          
+                          <div onClick={hacker} className="theme">
+                          <FontAwesomeIcon className="font" onClick={modes} icon={faCloud}></FontAwesomeIcon>
+                          <p>Paoazur Theme</p>
+                          </div>
+
+                           
                         </div>}
                     </div>
 
@@ -138,7 +185,7 @@ let NavBar = ()=>{
 
 
             {Toggle && 
-            <div className="sidenav1">
+            <div ref={side1} className="sidenav1">
                 <div className="grd home-div">
                     <div className="side-nav-div">
                     <FontAwesomeIcon className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
