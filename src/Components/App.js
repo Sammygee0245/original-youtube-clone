@@ -23,7 +23,7 @@ function App() {
   //   />
   // })
 
-let vv = VidState.map((tems)=>{return (
+let vv = VidState?.map((tems)=>{return (
   <VidoeDiv
   title = {tems.title}
   url = {tems.url}
