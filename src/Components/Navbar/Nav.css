@@ -35,6 +35,15 @@
     justify-content: center;
 }
 
+.back{
+    color: red;
+    font-size: 40px;
+    position: absolute;
+    top: 35px;
+    left: 10px;
+    cursor: pointer;
+}
+
 .sfind{
     margin-top: 30px;
     width: 80%;
@@ -108,11 +117,14 @@
 .logo{
     width: 90px;
     height: 50px;
-    background-image: url("/public/tubeimage/logo.png");
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-position: center;
-    background-size: contain;
+   display: flex;
+   align-items: center;
+}
+
+.paper{
+    font-size: 28px;
+    color: rgb(226, 2, 2);
+    margin-left: 10px;
 }
 
 .search-div{
@@ -259,7 +271,7 @@
 .mode{
     width: 230px;
     height: 300px;
-    background-color: rgb(226, 226, 226);
+    background-color: rgb(255, 255, 255);
     position: absolute;
     right: 2rem;
     top: 3rem;
@@ -268,6 +280,8 @@
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
+    box-shadow: 2px 2px 2px rgb(165, 160, 160),
+    -2px -2px 2px rgb(165, 160, 160);
 }
 
 .settheme{
@@ -286,4 +300,20 @@
     border: 1px solid transparent;
     border-bottom-color: gray;
     cursor: pointer;
+}
+
+.sun{
+    color: rgb(219, 62, 0);
+}
+
+.lemon{
+    color: #007a3b;
+}
+
+.cloud{
+    color: #02348a;
+}
+
+.champ{
+    color: #e2477b;
 }

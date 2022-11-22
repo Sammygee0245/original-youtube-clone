@@ -5,17 +5,31 @@ import "./App.css"
 
 
 
+
 function App() {
+
 
   let [VidState,setVidState]=useState([])
 
+  let [InputValue,setInputValue]= useState("movies")
+
+  let [Counter, setCounter] = useState(0)
+
+  let replace=(place)=>{
+    // console.log(place)
+    setInputValue(place)
+  }
+
+  console.log(Counter)
+
+  console.log(InputValue)
+
   useEffect(()=>{
-    fetch("https://newsapi.org/v2/everything?q=movies&from=2022-11-16&sortBy=publishedAt&apiKey=29759b6aaa11454996b41a8ba2527748")
+    fetch("https://newsapi.org/v2/everything?q="+InputValue+"&from=2022-11-20&sortBy=publishedAt&apiKey=29759b6aaa11454996b41a8ba2527748")
     .then(res=>res.json())
     .then(data=>setVidState(data.articles))
     .catch(err=>console.log("Unavailable"))
-    
-  },[])
+  },[Counter])
 
   // let Tube = VidState.articles.map((tems)=>{
   //   return <VidoeDiv
@@ -35,11 +49,19 @@ let vv = VidState?.map((tems)=>{return (
 
 console.log(VidState)
 
+
  
 
   return (
     <div className="App">
-      <NavBar/>
+      <NavBar
+      InputValue = {InputValue}
+      setInputValue = {setInputValue}
+      rep ={replace}
+      counter = {Counter}
+      setCounter = {setCounter}
+      />
+      
       <div className="grd1">
       {vv}
       </div>
@@ -49,20 +71,3 @@ console.log(VidState)
 
 export default App;
 
-
-
-// let [News,setNews]=useState()
-
-// useEffect(()=>{
-//   fetch("https://newsapi.org/v2/everything?q=entertainment&from=2022-11-13&sortBy=publishedAt&apiKey=29759b6aaa11454996b41a8ba2527748").then(res=>res.json()).then(data=>setNews(data))
-// },[])
-
-// let vid = News.articles.map((tems)=>{
-//   return (
-//     <VidoeDiv
-//     tems = {tems}
-//     />
-//   )
-// })
-
-// console.log(vid)

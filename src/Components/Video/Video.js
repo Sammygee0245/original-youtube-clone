@@ -17,8 +17,6 @@ let VidoeDiv = (props)=>{
                     </div>
                 </div>
             </a>
-
-            
         </div>
     )
 }

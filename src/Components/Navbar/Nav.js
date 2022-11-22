@@ -1,10 +1,10 @@
 import React,{useState,useRef} from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars,faSearch,faPaperclip,faBell,faMoon,faX ,faSun,faLemon,faChampagneGlasses,faCloud} from "@fortawesome/free-solid-svg-icons";
+import { faBars,faSearch,faPaperclip,faBell,faMoon,faX ,faSun,faLemon,faChampagneGlasses,faCloud,faArrowLeft,faNewspaper} from "@fortawesome/free-solid-svg-icons";
 import "./Nav.css"
 
 
-let NavBar = ()=>{
+let NavBar = (props)=>{
     const nav = useRef()
     const side2 = useRef()
     const side1 = useRef()
@@ -13,19 +13,22 @@ let NavBar = ()=>{
 
     let [Find,setFind]= useState(false)
 
-    let [InputValue,setInputValue] = useState("")
-
     let [Mode,setMode]=useState(false)
 
     let [Noti,setNoti]= useState(false)
+
 
     
     let fclick = ()=>{
         setFind(!Find)
     }
 
-    let cclick = ()=>{
-        alert(InputValue)
+    // let cclick = ()=>{
+        
+
+    // }
+
+    let back = ()=>{
         setFind(!Find)
     }
 
@@ -36,13 +39,13 @@ let NavBar = ()=>{
     }
 
     let CollectInput = (event)=>{
-        setInputValue(event.target.value)
+        props.setInputValue(event.target.value)
     }
 
-    let Show = InputValue.length>0
+    let Show = props.InputValue.length > 0
 
     let clear = ()=>{
-        setInputValue("")
+       props.setInputValue("")
     }
 
     let modes = ()=>{
@@ -99,6 +102,12 @@ let NavBar = ()=>{
         setMode(!Mode)
     }
 
+    let PlaceClear = ()=>{
+        props.rep(props.InputValue)
+        setFind(!Find)
+        props.setCounter(props.counter+1)
+    }
+
     
 
 
@@ -106,10 +115,11 @@ let NavBar = ()=>{
         <div>
             {Find && 
             <div className="find">
+                <FontAwesomeIcon className="back" onClick={back} icon={faArrowLeft}></FontAwesomeIcon>
                 <div className="sfind">
-                    <input className="sfind-input" type="text" value={InputValue} onChange={CollectInput}/>
+                    <input autoFocus className="sfind-input" type="text" value={props.InputValue} onChange={CollectInput}/>
                     {Show &&<FontAwesomeIcon icon={faX} className="clear" onClick={clear}></FontAwesomeIcon>}
-                    <FontAwesomeIcon className="fsearch font" onClick={cclick} icon={faSearch}></FontAwesomeIcon>
+                    <FontAwesomeIcon className="fsearch font" onClick={PlaceClear} icon={faSearch}></FontAwesomeIcon>
                 </div>
             </div>}
 
@@ -118,7 +128,8 @@ let NavBar = ()=>{
                 <div   className="top-nav">
                     <div className="logo-div" >
                     <FontAwesomeIcon className="font" title="menu" onClick={click} icon={faBars}></FontAwesomeIcon>
-                        <div className="logo"></div>
+                        <div className="logo">
+                        </div>
                     </div>
 
                     <div className="search-div">
@@ -131,29 +142,29 @@ let NavBar = ()=>{
                         <FontAwesomeIcon title="notification"  className="font" onClick={notify} icon={faBell}></FontAwesomeIcon>
                         {Noti&& <div className="mode">Notii</div>}
 
-                        <FontAwesomeIcon title="theme" className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
+                        <FontAwesomeIcon  title="theme" className="font" onClick={modes} icon={faMoon}></FontAwesomeIcon>
                         {Mode && 
                         <div  className="mode">
                             <div className="settheme"><h3>Set Theme</h3></div>
 
-                            <div onClick={sun}  className="theme">
+                            <div onClick={sun}  className="sun theme">
                             <FontAwesomeIcon className="font"  icon={faSun}></FontAwesomeIcon>
                             <p>Light Theme</p>
                             </div>
                           
-                          <div onClick={dark}  className="theme">
+                          <div onClick={dark}  className="champ theme">
                           <FontAwesomeIcon className="font"  icon={faChampagneGlasses}></FontAwesomeIcon>
                           <p>Champange Theme</p>
                           </div>
 
                           
-                          <div onClick={fancy} className="theme">
+                          <div onClick={fancy} className="lemon theme">
                           <FontAwesomeIcon className="font" onClick={modes} icon={faLemon}></FontAwesomeIcon>
                           <p>Lemonade Theme</p>
                           </div>
 
                           
-                          <div onClick={hacker} className="theme">
+                          <div onClick={hacker} className="cloud theme">
                           <FontAwesomeIcon className="font" onClick={modes} icon={faCloud}></FontAwesomeIcon>
                           <p>Paoazur Theme</p>
                           </div>
